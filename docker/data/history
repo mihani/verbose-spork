@@ -1,1 +1,20 @@
 composer install
+composer api
+composer req
+composer require api-platform/api-pack
+php -r "echo ini_get('memory_limit').PHP_EOL;"
+composer require api-platform/api-pack
+composer req api
+cd skeleton/
+composer req api
+..
+ls -a
+cd ..
+ls -a
+composer update
+ls -a
+composer install
+bin/console d:d:c
+exit;
+$ composer require doctrine/doctrine-migrations-bundle "^2.0"
+composer require doctrine/doctrine-migrations-bundle "^2.0"
