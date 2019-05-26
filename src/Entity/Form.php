@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -72,9 +73,9 @@ class Form
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getQuestions(): ArrayCollection
+    public function getQuestions(): Collection
     {
         return $this->questions;
     }
@@ -89,33 +90,5 @@ class Form
         $this->questions = $questions;
 
         return $this;
-    }
-
-    /**
-     * @param Question $question
-     *
-     * @return ArrayCollection
-     */
-    public function addQuestion(Question $question): ArrayCollection
-    {
-        if (!$this->questions->contains($question)) {
-            $this->questions->add($question);
-        }
-
-        return $this->questions;
-    }
-
-    /**
-     * @param Question $question
-     *
-     * @return ArrayCollection
-     */
-    public function removeQuestion(Question $question): ArrayCollection
-    {
-        if ($this->questions->contains($question)) {
-            $this->questions->removeElement($question);
-        }
-
-        return $this->questions;
     }
 }

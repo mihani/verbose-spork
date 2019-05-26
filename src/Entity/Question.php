@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
@@ -100,7 +101,7 @@ class Question
     /**
      * @return ArrayCollection
      */
-    public function getAnwsers(): ArrayCollection
+    public function getAnwsers(): Collection
     {
         return $this->anwsers;
     }
@@ -115,33 +116,5 @@ class Question
         $this->anwsers = $anwsers;
 
         return $this;
-    }
-
-    /**
-     * @param Answer $answer
-     *
-     * @return ArrayCollection
-     */
-    public function addAnwser(Answer $answer): ArrayCollection
-    {
-        if (!$this->anwsers->contains($answer)) {
-            $this->anwsers->add($answer);
-        }
-
-        return $this->anwsers;
-    }
-
-    /**
-     * @param Answer $answer
-     *
-     * @return ArrayCollection
-     */
-    public function removeAnswer(Answer $answer): ArrayCollection
-    {
-        if ($this->anwsers->contains($answer)) {
-            $this->anwsers->removeElement($answer);
-        }
-
-        return $this->anwsers;
     }
 }

@@ -1,4 +1,4 @@
-App\Entity\Anwser:
+App\Entity\Answer:
   attributes:
     normalization_context:
       groups: ['read']
