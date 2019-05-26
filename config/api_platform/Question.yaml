@@ -1,0 +1,5 @@
+App\Entity\Question:
+  collectionOperations:
+    post: ~
+  itemOperations:
+    get: ~

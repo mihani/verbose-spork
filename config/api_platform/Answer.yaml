@@ -1,0 +1,10 @@
+App\Entity\Answer:
+  properties:
+    answer:
+      subresource:
+      resourceClass: 'App\Entity\Question'
+      collection: false
+  collectionOperations:
+    post: ~
+  itemOperations:
+    get: ~

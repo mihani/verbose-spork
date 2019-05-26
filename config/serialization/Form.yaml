@@ -1,0 +1,10 @@
+App\Entity\Form:
+  attributes:
+    normalization_context:
+      groups: ['read']
+    denormalization_context:
+      groups: ['write']
+    id:
+      groups: ['read']
+    name:
+      groups: ['read', 'write']
