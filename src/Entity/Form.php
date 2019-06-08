@@ -91,4 +91,32 @@ class Form
 
         return $this;
     }
+
+    /**
+     * @param Question $question
+     *
+     * @return ArrayCollection
+     */
+    public function addQuestion(Question $question): ArrayCollection
+    {
+        if (!$this->questions->contains($question)) {
+            $this->questions->add($question);
+        }
+
+        return $this->questions;
+    }
+
+    /**
+     * @param Question $question
+     *
+     * @return ArrayCollection
+     */
+    public function removeQuestion(Question $question): ArrayCollection
+    {
+        if ($this->questions->contains($question)) {
+            $this->questions->removeElement($question);
+        }
+
+        return $this->questions;
+    }
 }

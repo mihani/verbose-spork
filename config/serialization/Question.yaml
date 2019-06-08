@@ -8,5 +8,3 @@ App\Entity\Question:
       groups: ['read']
     label:
       groups: ['read', 'write']
-    form:
-      groups: ['read', 'write']

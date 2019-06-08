@@ -117,4 +117,32 @@ class Question
 
         return $this;
     }
+
+    /**
+     * @param Answer $answer
+     *
+     * @return ArrayCollection
+     */
+    public function addAnwser(Answer $answer): ArrayCollection
+    {
+        if (!$this->anwsers->contains($answer)) {
+            $this->anwsers->add($answer);
+        }
+
+        return $this->anwsers;
+    }
+
+    /**
+     * @param Answer $answer
+     *
+     * @return ArrayCollection
+     */
+    public function removeAnswer(Answer $answer): ArrayCollection
+    {
+        if ($this->anwsers->contains($answer)) {
+            $this->anwsers->removeElement($answer);
+        }
+
+        return $this->anwsers;
+    }
 }
