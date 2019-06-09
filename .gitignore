@@ -1,3 +1,5 @@
+/docker/data/*
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -7,4 +9,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-/docker/data/*
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
