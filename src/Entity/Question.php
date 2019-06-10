@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Traits\Entity\TypeformIdEntityTrait;
+use App\Traits\Entity\TypeformRefEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,6 +15,8 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 class Question
 {
     use SoftDeleteableEntity;
+    use TypeformIdEntityTrait;
+    use TypeformRefEntityTrait;
 
     /**
      * @var string
@@ -45,9 +49,31 @@ class Question
      */
     private $anwsers;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", name="multiple_choice")
+     */
+    private $multipleChoice = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", name="type")
+     */
+    private $type;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="QuestionChoice", mappedBy="question")
+     */
+    private $questionChoices;
+
     public function __construct()
     {
         $this->anwsers = new ArrayCollection();
+        $this->questionChoices = new ArrayCollection();
     }
 
     /**
@@ -144,5 +170,93 @@ class Question
         }
 
         return $this->anwsers;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMultipleChoice(): bool
+    {
+        return $this->multipleChoice;
+    }
+
+    /**
+     * @param bool $multipleChoice
+     *
+     * @return Question
+     */
+    public function setMultipleChoice(bool $multipleChoice): Question
+    {
+        $this->multipleChoice = $multipleChoice;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return Question
+     */
+    public function setType(string $type): Question
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getQuestionChoices(): ArrayCollection
+    {
+        return $this->questionChoices;
+    }
+
+    /**
+     * @param ArrayCollection $questionChoices
+     *
+     * @return Question
+     */
+    public function setQuestionChoices(ArrayCollection $questionChoices): Question
+    {
+        $this->questionChoices = $questionChoices;
+
+        return $this;
+    }
+
+    /**
+     * @param QuestionChoice $questionChoice
+     *
+     * @return ArrayCollection
+     */
+    public function addQuestionChoice(QuestionChoice $questionChoice): ArrayCollection
+    {
+        if (!$this->questionChoices->contains($questionChoice)) {
+            $this->questionChoices->add($questionChoice);
+        }
+
+        return $this->questionChoices;
+    }
+
+    /**
+     * @param QuestionChoice $questionChoice
+     *
+     * @return ArrayCollection
+     */
+    public function removeQuestionChoice(QuestionChoice $questionChoice): ArrayCollection
+    {
+        if ($this->questionChoices->contains($questionChoice)) {
+            $this->questionChoices->removeElement($questionChoice);
+        }
+
+        return $this->questionChoices;
     }
 }

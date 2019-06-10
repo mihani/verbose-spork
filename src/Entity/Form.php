@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Traits\Entity\TypeformIdEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,6 +16,7 @@ class Form
 {
     use TimestampableEntity;
     use SoftDeleteableEntity;
+    use TypeformIdEntityTrait;
 
     /**
      * @var string

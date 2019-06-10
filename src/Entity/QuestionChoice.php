@@ -2,17 +2,19 @@
 
 namespace App\Entity;
 
+use App\Traits\Entity\TypeformIdEntityTrait;
+use App\Traits\Entity\TypeformRefEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity()
  */
-class Answer
+class QuestionChoice
 {
-    use TimestampableEntity;
     use SoftDeleteableEntity;
+    use TypeformIdEntityTrait;
+    use TypeformRefEntityTrait;
 
     /**
      * @var string
@@ -26,14 +28,14 @@ class Answer
     /**
      * @var string
      *
-     * @ORM\Column(type="string", name="content")
+     * @ORM\Column(type="string", name="label")
      */
-    private $content;
+    private $label;
 
     /**
      * @var Question
      *
-     * @ORM\ManyToOne(targetEntity="Question", inversedBy="anwsers")
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="questionChoices")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     private $question;
@@ -49,21 +51,9 @@ class Answer
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getLabel(): string
     {
-        return $this->content;
-    }
-
-    /**
-     * @param string $content
-     *
-     * @return Answer
-     */
-    public function setContent(string $content): Answer
-    {
-        $this->$content = $content;
-
-        return $this;
+        return $this->label;
     }
 
     /**
@@ -77,9 +67,9 @@ class Answer
     /**
      * @param Question $question
      *
-     * @return Answer
+     * @return QuestionChoice
      */
-    public function setQuestion(Question $question): Answer
+    public function setQuestion(Question $question): QuestionChoice
     {
         $this->question = $question;
 
