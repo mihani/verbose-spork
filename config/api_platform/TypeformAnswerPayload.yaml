@@ -1,0 +1,5 @@
+App\Dto\TypeformAnswerPayload:
+  collectionOperations:
+    post:
+      path: '/new-form-answer'
+  itemOperations: []

@@ -1,0 +1,16 @@
+App\Dto\TypeformAnswerPayload:
+  properties:
+    form_response:
+      - Type: array
+      - NotBlank: ~
+      - NotNull: ~
+    event_type:
+      - Type: string
+      - EqualTo: form_response
+      - NotBlank: ~
+      - NotNull: ~
+    event_id:
+      - Type: string
+      - NotBlank: ~
+      - NotNull: ~
+      
