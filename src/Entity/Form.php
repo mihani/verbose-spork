@@ -10,6 +10,8 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ *
  * @ORM\Entity()
  */
 class Form
@@ -75,9 +77,9 @@ class Form
     }
 
     /**
-     * @return Collection
+     * @return ArrayCollection
      */
-    public function getQuestions(): Collection
+    public function getQuestions(): ArrayCollection
     {
         return $this->questions;
     }

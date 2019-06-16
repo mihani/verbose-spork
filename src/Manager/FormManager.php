@@ -3,7 +3,6 @@
 namespace App\Manager;
 
 use App\Entity\Form;
-use App\Repository\FormRepository;
 use App\Traits\EntityManagerInterfaceTrait;
 
 class FormManager
@@ -13,18 +12,16 @@ class FormManager
     /**
      * @param array $formResponse
      *
-     * @return Form|object|null
+     * @return Form
      */
-    public function createForm(array $formResponse)
+    public function createForm(array $formResponse): Form
     {
-        /** @var FormRepository $formRepository */
-        $formRepository = $this->em->getRepository(Form::class);
-
-        if ($form = $formRepository->findOneBy(['typeformId' => $formResponse['definition']['id']])){
+        /** @var Form $form */
+        if ($form = $this->em->getRepository(Form::class)->findOneBy(['typeformId' => $formResponse['id']])){
             return $form;
         }
 
-        return $this->create($formResponse['definition']);
+        return $this->create($formResponse);
     }
 
     /**

@@ -7,6 +7,8 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ *
  * @ORM\Entity()
  */
 class Answer
@@ -61,7 +63,7 @@ class Answer
      */
     public function setContent(string $content): Answer
     {
-        $this->$content = $content;
+        $this->content = $content;
 
         return $this;
     }

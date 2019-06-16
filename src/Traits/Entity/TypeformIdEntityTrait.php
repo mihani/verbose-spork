@@ -4,6 +4,9 @@ namespace App\Traits\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ */
 trait TypeformIdEntityTrait
 {
     /**

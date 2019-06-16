@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ *
  * @ORM\Entity()
  */
 class Question
@@ -17,6 +19,8 @@ class Question
     use SoftDeleteableEntity;
     use TypeformIdEntityTrait;
     use TypeformRefEntityTrait;
+
+    public const MULTIPLE_CHOICE_TYPE = 'multiple_choice';
 
     /**
      * @var string
@@ -52,9 +56,9 @@ class Question
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", name="multiple_choice")
+     * @ORM\Column(type="boolean", name="allow_other_choice")
      */
-    private $multipleChoice = false;
+    private $allowOtherChoice = false;
 
     /**
      * @var string
@@ -175,19 +179,19 @@ class Question
     /**
      * @return bool
      */
-    public function isMultipleChoice(): bool
+    public function isAllowOtherChoice(): bool
     {
-        return $this->multipleChoice;
+        return $this->allowOtherChoice;
     }
 
     /**
-     * @param bool $multipleChoice
+     * @param bool $allowOtherChoice
      *
      * @return Question
      */
-    public function setMultipleChoice(bool $multipleChoice): Question
+    public function setAllowOtherChoice(bool $allowOtherChoice): Question
     {
-        $this->multipleChoice = $multipleChoice;
+        $this->allowOtherChoice = $allowOtherChoice;
 
         return $this;
     }

@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ *
  * @ORM\Entity()
  */
 class QuestionChoice
@@ -54,6 +56,18 @@ class QuestionChoice
     public function getLabel(): string
     {
         return $this->label;
+    }
+
+    /**
+     * @param string $label
+     *
+     * @return QuestionChoice
+     */
+    public function setLabel(string $label): QuestionChoice
+    {
+        $this->label = $label;
+
+        return $this;
     }
 
     /**

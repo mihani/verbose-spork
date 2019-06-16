@@ -2,6 +2,9 @@
 
 namespace App\Dto;
 
+/**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ */
 class TypeformAnswerPayload
 {
     public const PAYLOAD_PATTERN = [
