@@ -13,6 +13,8 @@ trait EntityManagerInterfaceTrait
     private $em;
 
     /**
+     * @required
+     *          
      * @param EntityManagerInterface $em
      */
     public function setEntityManager(EntityManagerInterface $em)
