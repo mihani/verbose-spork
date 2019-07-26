@@ -18,7 +18,7 @@ class QuestionChoiceManager
      * @param array    $formQuestionChoices
      * @param Question $question
      */
-    public function createQuestionChoice(array $formQuestionChoices, Question $question)
+    public function createQuestionChoice(array $formQuestionChoices, Question $question): void
     {
         foreach ($formQuestionChoices as $formQuestionChoice) {
             if (!$this->em->getRepository(QuestionChoice::class)->findOneBy([
@@ -33,7 +33,7 @@ class QuestionChoiceManager
      * @param array    $formQuestionChoice
      * @param Question $question
      */
-    private function create(array $formQuestionChoice, Question $question)
+    private function create(array $formQuestionChoice, Question $question): void
     {
         $this->em->persist((new QuestionChoice())
             ->setTypeformId($formQuestionChoice['id'])

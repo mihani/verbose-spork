@@ -2,7 +2,6 @@
 
 namespace App\Manager;
 
-
 use App\Entity\Answer;
 use App\Entity\Question;
 use App\Traits\EntityManagerInterfaceTrait;
@@ -46,7 +45,6 @@ class AnswerManager
 
             $this->create($formAnswer, $question);
         }
-
     }
 
     /**
