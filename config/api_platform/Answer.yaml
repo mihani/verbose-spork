@@ -1,5 +1,4 @@
 App\Entity\Answer:
-  collectionOperations:
-    post: ~
+  collectionOperations: []
   itemOperations:
     get: ~
