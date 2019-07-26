@@ -1,5 +1,4 @@
 App\Entity\Form:
-  collectionOperations:
-    post: ~
+  collectionOperations: []
   itemOperations:
     get: ~
