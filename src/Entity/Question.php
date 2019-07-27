@@ -12,7 +12,7 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 /**
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Question
 {
@@ -54,7 +54,7 @@ class Question
     private $anwsers;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean", name="allow_other_choice")
      */

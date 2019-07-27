@@ -14,7 +14,7 @@ trait EntityManagerInterfaceTrait
 
     /**
      * @required
-     *          
+     *
      * @param EntityManagerInterface $em
      */
     public function setEntityManager(EntityManagerInterface $em): void

@@ -29,9 +29,9 @@ class QuestionManager
     {
         foreach ($formQuestions as $formQuestion) {
             if ($this->em->getRepository(Question::class)->findOneBy([
-                'typeformId'=>$formQuestion['id'],
-                'typeformRef' => $formQuestion['ref']])
-            ){
+                'typeformId' => $formQuestion['id'],
+                'typeformRef' => $formQuestion['ref'], ])
+            ) {
                 continue;
             }
 
@@ -50,12 +50,13 @@ class QuestionManager
             ->setForm($form)
             ->setType($formQuestion['type'])
             ->setTypeformRef($formQuestion['ref'])
-            ->setTypeformId($formQuestion['id']);
+            ->setTypeformId($formQuestion['id'])
+        ;
 
         $this->em->persist($question);
         $this->em->flush();
-        
-        if (Question::MULTIPLE_CHOICE_TYPE === $formQuestion['type']){
+
+        if (Question::MULTIPLE_CHOICE_TYPE === $formQuestion['type']) {
             $question->setAllowOtherChoice($formQuestion['allow_other_choice']);
 
             $this->questionChoiceManager->createQuestionChoice($formQuestion['choices'], $question);

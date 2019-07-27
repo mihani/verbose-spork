@@ -17,7 +17,7 @@ class FormManager
     public function createForm(array $formResponse): Form
     {
         /** @var Form $form */
-        if ($form = $this->em->getRepository(Form::class)->findOneBy(['typeformId' => $formResponse['id']])){
+        if ($form = $this->em->getRepository(Form::class)->findOneBy(['typeformId' => $formResponse['id']])) {
             return $form;
         }
 
@@ -33,7 +33,8 @@ class FormManager
     {
         $form = (new Form())
             ->setName($formDefinition['title'])
-            ->setTypeformId($formDefinition['id']);
+            ->setTypeformId($formDefinition['id'])
+        ;
 
         $this->em->persist($form);
         $this->em->flush();

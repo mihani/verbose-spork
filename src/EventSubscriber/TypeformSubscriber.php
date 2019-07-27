@@ -37,9 +37,9 @@ class TypeformSubscriber implements EventSubscriberInterface
         QuestionManager $questionManager,
         AnswerManager $answerManager
     ) {
-        $this->formManager     = $formManager;
+        $this->formManager = $formManager;
         $this->questionManager = $questionManager;
-        $this->answerManager   = $answerManager;
+        $this->answerManager = $answerManager;
     }
 
     /**
@@ -59,7 +59,7 @@ class TypeformSubscriber implements EventSubscriberInterface
      */
     public function newAnswers(ViewEvent $event): void
     {
-        if (!$event->getControllerResult() instanceof TypeformAnswerPayload){
+        if (!$event->getControllerResult() instanceof TypeformAnswerPayload) {
             return;
         }
 
