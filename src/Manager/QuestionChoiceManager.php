@@ -22,7 +22,6 @@ class QuestionChoiceManager
     {
         foreach ($formQuestionChoices as $formQuestionChoice) {
             if (!$this->em->getRepository(QuestionChoice::class)->findOneBy([
-                'typeformRef' => $formQuestionChoice['ref'],
                 'typeformId' => $formQuestionChoice['id']
             ])){
                 $this->create($formQuestionChoice, $question);
@@ -38,7 +37,6 @@ class QuestionChoiceManager
     {
         $this->em->persist((new QuestionChoice())
             ->setTypeformId($formQuestionChoice['id'])
-            ->setTypeformRef($formQuestionChoice['ref'])
             ->setLabel($formQuestionChoice['label'])
             ->setQuestion($question));
 

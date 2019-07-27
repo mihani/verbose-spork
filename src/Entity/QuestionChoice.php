@@ -16,7 +16,6 @@ class QuestionChoice
 {
     use SoftDeleteableEntity;
     use TypeformIdEntityTrait;
-    use TypeformRefEntityTrait;
 
     /**
      * @var string

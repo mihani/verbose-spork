@@ -24,12 +24,14 @@ class QuestionManager
     public function createQuestions(array $formQuestions, Form $form)
     {
         foreach ($formQuestions as $formQuestion) {
-            if (!$this->em->getRepository(Question::class)->findOneBy([
+            if ($this->em->getRepository(Question::class)->findOneBy([
                 'typeformId'=>$formQuestion['id'],
                 'typeformRef' => $formQuestion['ref']])
             ){
-                $this->create($formQuestion, $form);
+                continue;
             }
+
+            $this->create($formQuestion, $form);
         }
     }
 
@@ -47,12 +49,12 @@ class QuestionManager
             ->setTypeformId($formQuestion['id']);
 
         $this->em->persist($question);
+        $this->em->flush();
         
-        if (Question::MULTIPLE_CHOICE_TYPE === $formQuestion['type'] && $formQuestion['properties']){
-            $question->setAllowOtherChoice($formQuestion['properties']['allow_other_choice']);
+        if (Question::MULTIPLE_CHOICE_TYPE === $formQuestion['type']){
+            $question->setAllowOtherChoice($formQuestion['allow_other_choice']);
 
-            $this->questionChoiceManager->createQuestionChoice($formQuestion['properties']['choices'], $question);
+            $this->questionChoiceManager->createQuestionChoice($formQuestion['choices'], $question);
         }
-
     }
 }
