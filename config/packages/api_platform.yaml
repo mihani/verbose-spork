@@ -1,6 +1,6 @@
 api_platform:
     title: 'Job Contact API'
-    version: '2.0.0'
+    version: '2.1.0'
     show_webby: true
     name_converter: 'Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter'
     mapping:

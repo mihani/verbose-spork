@@ -44,7 +44,7 @@ class SecuritySubscriber implements EventSubscriberInterface
      */
     private function verifySignature($receivedSignature, $payload)
     {
-        $hash = hash_hmac('sha256',$payload,'created_token', true);
+        $hash = hash_hmac('sha256',$payload,$_ENV['TYPEFORM_SECRET'], true);
         $signature = sprintf('%s%s','sha256=',base64_encode($hash));
 
         return $signature === $receivedSignature;
