@@ -60,10 +60,13 @@ class AnswerManager
             $content = json_encode($content);
         }
 
+        if (is_bool($content)){
+            $content = $content ? 'true' : 'false';
+        }
+
         $this->em->persist((new Answer())
             ->setQuestion($question)
             ->setContent((string) $content));
         $this->em->flush();
     }
-
 }
