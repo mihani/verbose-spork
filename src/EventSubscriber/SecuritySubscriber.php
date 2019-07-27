@@ -29,8 +29,24 @@ class SecuritySubscriber implements EventSubscriberInterface
      */
     public function headerControl(RequestEvent $requestEvent): void
     {
-        if (!$requestEvent->getRequest()->headers->get('Typeform-Signature')){
-            $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
+        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')){
+            if (!$this->verifySignature($receivedSignature, (string) $requestEvent->getRequest()->getContent())){
+                $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
+            }
         }
+    }
+
+    /**
+     * @param $receivedSignature
+     * @param $payload
+     *
+     * @return bool
+     */
+    private function verifySignature($receivedSignature, $payload)
+    {
+        $hash = hash_hmac('sha256',$payload,'created_token', true);
+        $signature = sprintf('%s%s','sha256=',base64_encode($hash));
+
+        return $signature === $receivedSignature;
     }
 }
