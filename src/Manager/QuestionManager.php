@@ -21,7 +21,11 @@ class QuestionManager
         $this->questionChoiceManager = $questionChoiceManager;
     }
 
-    public function createQuestions(array $formQuestions, Form $form)
+    /**
+     * @param array $formQuestions
+     * @param Form  $form
+     */
+    public function createQuestions(array $formQuestions, Form $form): void
     {
         foreach ($formQuestions as $formQuestion) {
             if ($this->em->getRepository(Question::class)->findOneBy([
@@ -39,7 +43,7 @@ class QuestionManager
      * @param array $formQuestion
      * @param Form  $form
      */
-    private function create(array $formQuestion, Form $form)
+    private function create(array $formQuestion, Form $form): void
     {
         $question = (new Question())
             ->setLabel($formQuestion['title'])

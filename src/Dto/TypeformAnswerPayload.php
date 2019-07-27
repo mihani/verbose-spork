@@ -17,11 +17,11 @@ class TypeformAnswerPayload
     ];
 
     /** @var string */
-    public $event_id;
+    public $eventId;
 
     /** @var string */
-    public $event_type;
+    public $eventType;
 
-    /** @var array   */
-    public $form_response;
+    /** @var array */
+    public $formResponse;
 }

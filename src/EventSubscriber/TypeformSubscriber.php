@@ -57,14 +57,14 @@ class TypeformSubscriber implements EventSubscriberInterface
      *
      * @throws \Exception
      */
-    public function newAnswers(ViewEvent $event)
+    public function newAnswers(ViewEvent $event): void
     {
         if (!$event->getControllerResult() instanceof TypeformAnswerPayload){
             return;
         }
 
         $typeform = array_intersect_key(
-            $event->getControllerResult()->form_response,
+            $event->getControllerResult()->formResponse,
             TypeformAnswerPayload::PAYLOAD_PATTERN
         );
 
