@@ -29,7 +29,7 @@ class SecuritySubscriber implements EventSubscriberInterface
      */
     public function headerControl(RequestEvent $requestEvent): void
     {
-        if (!$requestEvent->getRequest()->headers->get('x-typeform-token')){
+        if (!$requestEvent->getRequest()->headers->get('Typeform-Signature')){
             $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
         }
     }

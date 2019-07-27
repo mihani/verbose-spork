@@ -21,6 +21,10 @@ class QuestionManager
         $this->questionChoiceManager = $questionChoiceManager;
     }
 
+    /**
+     * @param array $formQuestions
+     * @param Form  $form
+     */
     public function createQuestions(array $formQuestions, Form $form): void
     {
         foreach ($formQuestions as $formQuestion) {
