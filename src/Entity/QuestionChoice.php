@@ -3,14 +3,13 @@
 namespace App\Entity;
 
 use App\Traits\Entity\TypeformIdEntityTrait;
-use App\Traits\Entity\TypeformRefEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class QuestionChoice
 {

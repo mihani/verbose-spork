@@ -11,9 +11,9 @@ class TypeformAnswerPayload
         'definition' => [
             'id' => '',
             'title' => '',
-            'fields' => []
+            'fields' => [],
         ],
-        'answers' => []
+        'answers' => [],
     ];
 
     /** @var string */

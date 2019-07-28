@@ -2,7 +2,6 @@
 
 namespace App\EventSubscriber;
 
-use ApiPlatform\Core\EventListener\AddFormatListener;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,23 +28,23 @@ class SecuritySubscriber implements EventSubscriberInterface
      */
     public function headerControl(RequestEvent $requestEvent): void
     {
-        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')){
-            if (!$this->verifySignature($receivedSignature, (string) $requestEvent->getRequest()->getContent())){
+        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')) {
+            if (!$this->verifySignature($receivedSignature, (string) $requestEvent->getRequest()->getContent())) {
                 $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
             }
         }
     }
 
     /**
-     * @param $receivedSignature
-     * @param $payload
+     * @param string $receivedSignature
+     * @param string $payload
      *
      * @return bool
      */
-    private function verifySignature($receivedSignature, $payload)
+    private function verifySignature(string $receivedSignature, string $payload): bool
     {
-        $hash = hash_hmac('sha256',$payload,$_ENV['TYPEFORM_SECRET'], true);
-        $signature = sprintf('%s%s','sha256=',base64_encode($hash));
+        $hash = hash_hmac('sha256', $payload, $_ENV['TYPEFORM_SECRET'], true);
+        $signature = sprintf('%s%s', 'sha256=', base64_encode($hash));
 
         return $signature === $receivedSignature;
     }

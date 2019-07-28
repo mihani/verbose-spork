@@ -33,13 +33,15 @@ class AnswerManager
     {
         foreach ($formAnswers as $formAnswer) {
             if (!$question = $this->em->getRepository(Question::class)->findOneBy([
-                'typeformId'=>$formAnswer['field']['id'],
-                'typeformRef' => $formAnswer['field']['ref']])
-            ){
+                'typeformId' => $formAnswer['field']['id'],
+                'typeformRef' => $formAnswer['field']['ref'], ])
+            ) {
                 throw new \Exception(
-                    sprintf('No question found with id %s and ref %s',
+                    sprintf(
+                        'No question found with id %s and ref %s',
                         $formAnswer['field']['id'],
-                        $formAnswer['field']['ref'])
+                        $formAnswer['field']['ref']
+                    )
                 );
             }
 
@@ -54,11 +56,11 @@ class AnswerManager
     private function create(array $formAnswer, Question $question)
     {
         $content = $formAnswer[$formAnswer['type']];
-        if (is_array($content)){
+        if (is_array($content)) {
             $content = json_encode($content);
         }
 
-        if (is_bool($content)){
+        if (is_bool($content)) {
             $content = $content ? 'true' : 'false';
         }
 

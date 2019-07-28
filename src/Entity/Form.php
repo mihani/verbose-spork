@@ -11,7 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 /**
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Form
 {

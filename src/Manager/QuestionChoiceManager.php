@@ -2,7 +2,6 @@
 
 namespace App\Manager;
 
-
 use App\Entity\Question;
 use App\Entity\QuestionChoice;
 use App\Traits\EntityManagerInterfaceTrait;
@@ -22,8 +21,8 @@ class QuestionChoiceManager
     {
         foreach ($formQuestionChoices as $formQuestionChoice) {
             if (!$this->em->getRepository(QuestionChoice::class)->findOneBy([
-                'typeformId' => $formQuestionChoice['id']
-            ])){
+                'typeformId' => $formQuestionChoice['id'],
+            ])) {
                 $this->create($formQuestionChoice, $question);
             }
         }
