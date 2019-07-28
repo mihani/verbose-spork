@@ -1,4 +1,7 @@
-# UPGRADE File
+# UPGRADE
+
+## 2.1.0 to 2.2.0
+* Add php-cs-fixer
 
 ## 2.0.0 to 2.1.0
 * Verify header validity
