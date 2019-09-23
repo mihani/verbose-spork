@@ -5,6 +5,8 @@ namespace App\Manager;
 use App\Entity\Answer;
 use App\Entity\Question;
 use App\Traits\EntityManagerInterfaceTrait;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
@@ -31,6 +33,7 @@ class AnswerManager
      */
     public function createAnwser(array $formAnswers)
     {
+        $token = Uuid::uuid4();
         foreach ($formAnswers as $formAnswer) {
             if (!$question = $this->em->getRepository(Question::class)->findOneBy([
                 'typeformId' => $formAnswer['field']['id'],
@@ -45,7 +48,7 @@ class AnswerManager
                 );
             }
 
-            $this->create($formAnswer, $question);
+            $this->create($formAnswer, $question, $token);
         }
     }
 
@@ -53,7 +56,7 @@ class AnswerManager
      * @param array    $formAnswer
      * @param Question $question
      */
-    private function create(array $formAnswer, Question $question)
+    private function create(array $formAnswer, Question $question, UuidInterface $groupByToken)
     {
         $content = $formAnswer[$formAnswer['type']];
         if (is_array($content)) {
@@ -66,7 +69,8 @@ class AnswerManager
 
         $this->em->persist((new Answer())
             ->setQuestion($question)
-            ->setContent((string) $content));
+            ->setContent((string) $content)
+            ->setGroupByToken($groupByToken));
         $this->em->flush();
     }
 }

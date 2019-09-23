@@ -1,5 +1,11 @@
 # UPGRADE
 
+## 2.3.0 to 2.4.0
+* Add groupByToken to group form answer
+
+## 2.2.0 to 2.3.0
+* Add Sentry
+
 ## 2.1.0 to 2.2.0
 * Add php-cs-fixer
 

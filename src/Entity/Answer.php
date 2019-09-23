@@ -33,6 +33,15 @@ class Answer
     private $content;
 
     /**
+     * This token allow to group answer arrived by the same payload
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", name="group_by_token")
+     */
+    private $groupByToken;
+
+    /**
      * @var Question
      *
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="anwsers")
@@ -84,6 +93,26 @@ class Answer
     public function setQuestion(Question $question): Answer
     {
         $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGroupByToken(): string
+    {
+        return $this->groupByToken;
+    }
+
+    /**
+     * @param string $groupByToken
+     *
+     * @return Answer
+     */
+    public function setGroupByToken(string $groupByToken): Answer
+    {
+        $this->groupByToken = $groupByToken;
 
         return $this;
     }
