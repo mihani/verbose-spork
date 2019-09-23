@@ -28,11 +28,11 @@ class SecuritySubscriber implements EventSubscriberInterface
      */
     public function headerControl(RequestEvent $requestEvent): void
     {
-        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')) {
-            if (!$this->verifySignature($receivedSignature, (string) $requestEvent->getRequest()->getContent())) {
-                $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
-            }
-        }
+//        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')) {
+//            if (!$this->verifySignature($receivedSignature, (string) $requestEvent->getRequest()->getContent())) {
+//                $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
+//            }
+//        }
     }
 
     /**
