@@ -33,7 +33,7 @@ class Answer
     private $content;
 
     /**
-     * This token allow to group answer arrived by the same payload
+     * This token allow to group answer arrived by the same payload.
      *
      * @var string
      *

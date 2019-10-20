@@ -1,5 +1,8 @@
 # UPGRADE
 
+## 2.4.0 to 2.4.1
+* Upgrade api platform to 2.5
+
 ## 2.3.0 to 2.4.0
 * Add groupByToken to group form answer
 

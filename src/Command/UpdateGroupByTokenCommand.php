@@ -26,9 +26,9 @@ class UpdateGroupByTokenCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @return int|void|null
-     *
      * @throws \Exception
+     *
+     * @return null|int|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -37,14 +37,15 @@ class UpdateGroupByTokenCommand extends Command
             ->from(Answer::class, 'answer')
             ->groupBy('answer.createdAt')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
 
         foreach ($formResults as $formResult) {
             $token = Uuid::uuid4();
             foreach (explode('|', $formResult['response']) as $item) {
-                $answer = $this->em->getRepository(Answer::class)->findOneBy(array(
-                    'id' => $item
-                ));
+                $answer = $this->em->getRepository(Answer::class)->findOneBy([
+                    'id' => $item,
+                ]);
 
                 $answer->setGroupByToken($token);
                 $this->em->flush();
