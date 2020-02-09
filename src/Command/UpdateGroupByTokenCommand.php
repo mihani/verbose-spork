@@ -23,9 +23,6 @@ class UpdateGroupByTokenCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
      * @throws \Exception
      *
      * @return null|int|void

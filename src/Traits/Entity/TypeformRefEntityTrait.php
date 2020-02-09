@@ -16,19 +16,11 @@ trait TypeformRefEntityTrait
      */
     private $typeformRef;
 
-    /**
-     * @return string
-     */
     public function getTypeformRef(): string
     {
         return $this->typeformRef;
     }
 
-    /**
-     * @param string $typeformRef
-     *
-     * @return self
-     */
     public function setTypeformRef(string $typeformRef): self
     {
         $this->typeformRef = $typeformRef;

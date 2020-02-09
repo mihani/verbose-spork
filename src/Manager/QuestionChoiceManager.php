@@ -13,10 +13,6 @@ class QuestionChoiceManager
 {
     use EntityManagerInterfaceTrait;
 
-    /**
-     * @param array    $formQuestionChoices
-     * @param Question $question
-     */
     public function createQuestionChoice(array $formQuestionChoices, Question $question): void
     {
         foreach ($formQuestionChoices as $formQuestionChoice) {
@@ -28,10 +24,6 @@ class QuestionChoiceManager
         }
     }
 
-    /**
-     * @param array    $formQuestionChoice
-     * @param Question $question
-     */
     private function create(array $formQuestionChoice, Question $question): void
     {
         $this->em->persist((new QuestionChoice())

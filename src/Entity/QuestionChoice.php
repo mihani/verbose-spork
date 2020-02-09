@@ -40,27 +40,16 @@ class QuestionChoice
      */
     private $question;
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getLabel(): string
     {
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     *
-     * @return QuestionChoice
-     */
     public function setLabel(string $label): QuestionChoice
     {
         $this->label = $label;
@@ -68,19 +57,11 @@ class QuestionChoice
         return $this;
     }
 
-    /**
-     * @return Question
-     */
     public function getQuestion(): Question
     {
         return $this->question;
     }
 
-    /**
-     * @param Question $question
-     *
-     * @return QuestionChoice
-     */
     public function setQuestion(Question $question): QuestionChoice
     {
         $this->question = $question;

@@ -13,9 +13,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class SecuritySubscriber implements EventSubscriberInterface
 {
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -23,9 +20,6 @@ class SecuritySubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param RequestEvent $requestEvent
-     */
     public function headerControl(RequestEvent $requestEvent): void
     {
 //        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')) {
@@ -35,12 +29,6 @@ class SecuritySubscriber implements EventSubscriberInterface
 //        }
     }
 
-    /**
-     * @param string $receivedSignature
-     * @param string $payload
-     *
-     * @return bool
-     */
     private function verifySignature(string $receivedSignature, string $payload): bool
     {
         $hash = hash_hmac('sha256', $payload, $_ENV['TYPEFORM_SECRET'], true);
