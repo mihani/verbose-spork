@@ -3,24 +3,17 @@ services:
 
   mysql:
     image: mysql:8.0
+    env_file: .env
     volumes:
       - mysql:/var/lib/mysql
       - ./docker/data:/docker/data
       - ./docker/mysql:/etc/mysql/conf.d
-    environment:
-      - MYSQL_DATABASE
-      - MYSQL_HOST
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_USER
-      - MYSQL_PASSWORD
 
   php:
     build: ./docker/php
+    env_file: .env
     environment:
       SSH_AUTH_SOCK: /tmp/agent.sock
-      XDEBUG: ${XDEBUG}
-      PHP_IDE_CONFIG: serverName=${XDEBUG_SERVER_NAME}
-      XDEBUG_CONFIG: remote_host=${LOCAL_IP} remote_port=${XDEBUG_PORT} idekey=${XDEBUG_IDEKEY}
     volumes:
       - $SSH_AUTH_SOCK:/tmp/agent.sock
       - ~/.composer:/home/.composer

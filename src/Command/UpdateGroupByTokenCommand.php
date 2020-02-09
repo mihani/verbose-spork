@@ -9,6 +9,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+// TODO:: remove this, it's one shot command
 class UpdateGroupByTokenCommand extends Command
 {
     protected static $defaultName = 'update:answer:group-by-token';
