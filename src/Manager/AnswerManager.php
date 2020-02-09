@@ -18,17 +18,12 @@ class AnswerManager
     /** @var QuestionManager */
     private $questionManager;
 
-    /**
-     * @param QuestionManager $questionManager
-     */
     public function __construct(QuestionManager $questionManager)
     {
         $this->questionManager = $questionManager;
     }
 
     /**
-     * @param array $formAnswers
-     *
      * @throws \Exception
      */
     public function createAnwser(array $formAnswers)
@@ -52,10 +47,6 @@ class AnswerManager
         }
     }
 
-    /**
-     * @param array    $formAnswer
-     * @param Question $question
-     */
     private function create(array $formAnswer, Question $question, UuidInterface $groupByToken)
     {
         $content = $formAnswer[$formAnswer['type']];

@@ -13,18 +13,11 @@ class QuestionManager
     /** @var QuestionChoiceManager */
     private $questionChoiceManager;
 
-    /**
-     * @param QuestionChoiceManager $questionChoiceManager
-     */
     public function __construct(QuestionChoiceManager $questionChoiceManager)
     {
         $this->questionChoiceManager = $questionChoiceManager;
     }
 
-    /**
-     * @param array $formQuestions
-     * @param Form  $form
-     */
     public function createQuestions(array $formQuestions, Form $form): void
     {
         foreach ($formQuestions as $formQuestion) {
@@ -39,10 +32,6 @@ class QuestionManager
         }
     }
 
-    /**
-     * @param array $formQuestion
-     * @param Form  $form
-     */
     private function create(array $formQuestion, Form $form): void
     {
         $question = (new Question())

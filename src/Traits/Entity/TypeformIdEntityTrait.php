@@ -16,19 +16,11 @@ trait TypeformIdEntityTrait
      */
     private $typeformId;
 
-    /**
-     * @return string
-     */
     public function getTypeformId(): string
     {
         return $this->typeformId;
     }
 
-    /**
-     * @param string $typeformId
-     *
-     * @return self
-     */
     public function setTypeformId(string $typeformId): self
     {
         $this->typeformId = $typeformId;

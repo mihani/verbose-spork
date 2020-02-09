@@ -27,11 +27,6 @@ class TypeformSubscriber implements EventSubscriberInterface
     /** @var AnswerManager */
     private $answerManager;
 
-    /**
-     * @param FormManager     $formManager
-     * @param QuestionManager $questionManager
-     * @param AnswerManager   $answerManager
-     */
     public function __construct(
         FormManager $formManager,
         QuestionManager $questionManager,
@@ -42,9 +37,6 @@ class TypeformSubscriber implements EventSubscriberInterface
         $this->answerManager = $answerManager;
     }
 
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -53,8 +45,6 @@ class TypeformSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param ViewEvent $event
-     *
      * @throws \Exception
      */
     public function newAnswers(ViewEvent $event): void

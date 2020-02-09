@@ -80,27 +80,16 @@ class Question
         $this->questionChoices = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getLabel(): string
     {
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     *
-     * @return Question
-     */
     public function setLabel(string $label): Question
     {
         $this->label = $label;
@@ -108,19 +97,11 @@ class Question
         return $this;
     }
 
-    /**
-     * @return Form
-     */
     public function getForm(): Form
     {
         return $this->form;
     }
 
-    /**
-     * @param Form $form
-     *
-     * @return Question
-     */
     public function setForm(Form $form): Question
     {
         $this->form = $form;
@@ -136,11 +117,6 @@ class Question
         return $this->anwsers;
     }
 
-    /**
-     * @param ArrayCollection $anwsers
-     *
-     * @return Question
-     */
     public function setAnwsers(ArrayCollection $anwsers): Question
     {
         $this->anwsers = $anwsers;
@@ -148,11 +124,6 @@ class Question
         return $this;
     }
 
-    /**
-     * @param Answer $answer
-     *
-     * @return ArrayCollection
-     */
     public function addAnwser(Answer $answer): ArrayCollection
     {
         if (!$this->anwsers->contains($answer)) {
@@ -162,11 +133,6 @@ class Question
         return $this->anwsers;
     }
 
-    /**
-     * @param Answer $answer
-     *
-     * @return ArrayCollection
-     */
     public function removeAnswer(Answer $answer): ArrayCollection
     {
         if ($this->anwsers->contains($answer)) {
@@ -176,19 +142,11 @@ class Question
         return $this->anwsers;
     }
 
-    /**
-     * @return bool
-     */
     public function isAllowOtherChoice(): bool
     {
         return $this->allowOtherChoice;
     }
 
-    /**
-     * @param bool $allowOtherChoice
-     *
-     * @return Question
-     */
     public function setAllowOtherChoice(bool $allowOtherChoice): Question
     {
         $this->allowOtherChoice = $allowOtherChoice;
@@ -196,19 +154,11 @@ class Question
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return Question
-     */
     public function setType(string $type): Question
     {
         $this->type = $type;
@@ -216,19 +166,11 @@ class Question
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getQuestionChoices(): ArrayCollection
     {
         return $this->questionChoices;
     }
 
-    /**
-     * @param ArrayCollection $questionChoices
-     *
-     * @return Question
-     */
     public function setQuestionChoices(ArrayCollection $questionChoices): Question
     {
         $this->questionChoices = $questionChoices;
@@ -236,11 +178,6 @@ class Question
         return $this;
     }
 
-    /**
-     * @param QuestionChoice $questionChoice
-     *
-     * @return ArrayCollection
-     */
     public function addQuestionChoice(QuestionChoice $questionChoice): ArrayCollection
     {
         if (!$this->questionChoices->contains($questionChoice)) {
@@ -250,11 +187,6 @@ class Question
         return $this->questionChoices;
     }
 
-    /**
-     * @param QuestionChoice $questionChoice
-     *
-     * @return ArrayCollection
-     */
     public function removeQuestionChoice(QuestionChoice $questionChoice): ArrayCollection
     {
         if ($this->questionChoices->contains($questionChoice)) {
