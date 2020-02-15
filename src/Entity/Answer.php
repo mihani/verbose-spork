@@ -49,27 +49,16 @@ class Answer
      */
     private $question;
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getContent(): string
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     *
-     * @return Answer
-     */
     public function setContent(string $content): Answer
     {
         $this->content = $content;
@@ -77,19 +66,11 @@ class Answer
         return $this;
     }
 
-    /**
-     * @return Question
-     */
     public function getQuestion(): Question
     {
         return $this->question;
     }
 
-    /**
-     * @param Question $question
-     *
-     * @return Answer
-     */
     public function setQuestion(Question $question): Answer
     {
         $this->question = $question;
@@ -97,19 +78,11 @@ class Answer
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getGroupByToken(): string
     {
         return $this->groupByToken;
     }
 
-    /**
-     * @param string $groupByToken
-     *
-     * @return Answer
-     */
     public function setGroupByToken(string $groupByToken): Answer
     {
         $this->groupByToken = $groupByToken;

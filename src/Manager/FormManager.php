@@ -9,11 +9,6 @@ class FormManager
 {
     use EntityManagerInterfaceTrait;
 
-    /**
-     * @param array $formResponse
-     *
-     * @return Form
-     */
     public function createForm(array $formResponse): Form
     {
         /** @var Form $form */
@@ -24,11 +19,6 @@ class FormManager
         return $this->create($formResponse);
     }
 
-    /**
-     * @param array $formDefinition
-     *
-     * @return Form
-     */
     private function create(array $formDefinition): Form
     {
         $form = (new Form())

@@ -7,10 +7,10 @@ doctrine:
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci
-        host: '%env(MYSQL_HOST)%'
-        dbname: '%env(MYSQL_DATABASE)%'
-        user: '%env(MYSQL_USER)%'
-        password: '%env(MYSQL_PASSWORD)%'
+        host: '%env(resolve:MYSQL_HOST)%'
+        dbname: '%env(resolve:MYSQL_DATABASE)%'
+        user: '%env(resolve:MYSQL_USER)%'
+        password: '%env(resolve:MYSQL_PASSWORD)%'
 
     orm:
         auto_generate_proxy_classes: true

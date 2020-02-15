@@ -47,27 +47,16 @@ class Form
         $this->questions = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return Form
-     */
     public function setName(string $name): Form
     {
         $this->name = $name;
@@ -75,19 +64,11 @@ class Form
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getQuestions(): ArrayCollection
     {
         return $this->questions;
     }
 
-    /**
-     * @param ArrayCollection $questions
-     *
-     * @return Form
-     */
     public function setQuestions(ArrayCollection $questions): Form
     {
         $this->questions = $questions;
@@ -95,11 +76,6 @@ class Form
         return $this;
     }
 
-    /**
-     * @param Question $question
-     *
-     * @return ArrayCollection
-     */
     public function addQuestion(Question $question): ArrayCollection
     {
         if (!$this->questions->contains($question)) {
@@ -109,11 +85,6 @@ class Form
         return $this->questions;
     }
 
-    /**
-     * @param Question $question
-     *
-     * @return ArrayCollection
-     */
     public function removeQuestion(Question $question): ArrayCollection
     {
         if ($this->questions->contains($question)) {
