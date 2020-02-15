@@ -5,6 +5,9 @@ namespace App\Manager;
 use App\Entity\Form;
 use App\Traits\EntityManagerInterfaceTrait;
 
+/**
+ * @author Maud Remoriquet <maud.remoriquet@gmail.com>
+ */
 class FormManager
 {
     use EntityManagerInterfaceTrait;

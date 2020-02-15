@@ -1,10 +1,30 @@
 DOCKER_COMPOSE = docker-compose
 
 ##
+## Env Dev
+##--------
+install-dev:
+	touch docker/data/history
+	cp .env .env.local
+	$(DOCKER_COMPOSE) up -d
+
+.PHONY : clean
+
+##
 ## Quality assurance
 ## -----------------
+cs-fixer:
+	$(DOCKER_COMPOSE) exec php vendor/bin/php-cs-fixer fix --verbose
+
+.PHONY : clean
+
 ##
-php-cs-fixer:                                          ## php-cs-fixer
-	$(DOCKER_COMPOSE) exec php vendor/bin/php-cs-fixer fix --verbose --diff --diff-format=udiff
+## Env Test
+## ---------
+install-test:
+	cp .env.test .env.test.local
+
+phpunit:
+	$(DOCKER_COMPOSE) exec php bin/phpunit
 
 .PHONY : clean

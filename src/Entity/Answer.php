@@ -17,37 +17,29 @@ class Answer
     use SoftDeleteableEntity;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    private $id;
+    private string $id;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="content")
      */
-    private $content;
+    private string $content;
 
     /**
      * This token allow to group answer arrived by the same payload.
      *
-     * @var string
-     *
      * @ORM\Column(type="string", name="group_by_token")
      */
-    private $groupByToken;
+    private string $groupByToken;
 
     /**
-     * @var Question
-     *
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="anwsers")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
-    private $question;
+    private Question $question;
 
     public function getId(): string
     {
