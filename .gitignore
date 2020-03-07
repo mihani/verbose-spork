@@ -1,4 +1,4 @@
-/docker/data/*
+history
 
 ###> symfony/framework-bundle ###
 /.env.local
