@@ -21,7 +21,6 @@
         "symfony/yaml": "4.4.*"
     },
     "require-dev": {
-        "dama/doctrine-test-bundle": "^6.3",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "friendsofphp/php-cs-fixer": "^2.15",
         "fzaninotto/faker": "^1.9",
