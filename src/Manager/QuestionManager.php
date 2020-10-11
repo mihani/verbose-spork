@@ -4,18 +4,17 @@ namespace App\Manager;
 
 use App\Entity\Form;
 use App\Entity\Question;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Traits\EntityManagerInterfaceTrait;
 
 class QuestionManager
 {
+    use EntityManagerInterfaceTrait;
+
     private QuestionChoiceManager $questionChoiceManager;
 
-    private EntityManagerInterface $em;
-
-    public function __construct(QuestionChoiceManager $questionChoiceManager, EntityManagerInterface $em)
+    public function __construct(QuestionChoiceManager $questionChoiceManager)
     {
         $this->questionChoiceManager = $questionChoiceManager;
-        $this->em = $em;
     }
 
     public function createQuestions(array $formQuestions, Form $form): void
@@ -23,8 +22,8 @@ class QuestionManager
         foreach ($formQuestions as $formQuestion) {
             if ($this->em->getRepository(Question::class)->findOneBy([
                 'typeformId' => $formQuestion['id'],
-                'typeformRef' => $formQuestion['ref'], ])
-            ) {
+                'typeformRef' => $formQuestion['ref'],
+            ])) {
                 continue;
             }
 
@@ -45,9 +44,9 @@ class QuestionManager
         $this->em->persist($question);
 
         if (Question::MULTIPLE_CHOICE_TYPE === $formQuestion['type']) {
-            $question->setAllowOtherChoice((bool) $formQuestion['properties']['allow_other_choice']);
+            $question->setAllowOtherChoice((bool) $formQuestion['allow_other_choice']);
 
-            $this->questionChoiceManager->createQuestionChoice($formQuestion['properties']['choices'], $question);
+            $this->questionChoiceManager->createQuestionChoice($formQuestion['choices'], $question);
         }
 
         $this->em->flush();

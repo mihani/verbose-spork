@@ -15,8 +15,7 @@ class AnswerManager
 {
     use EntityManagerInterfaceTrait;
 
-    /** @var QuestionManager */
-    private $questionManager;
+    private QuestionManager $questionManager;
 
     public function __construct(QuestionManager $questionManager)
     {

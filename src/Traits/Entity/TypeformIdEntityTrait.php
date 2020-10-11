@@ -10,11 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 trait TypeformIdEntityTrait
 {
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="typeform_id")
      */
-    private $typeformId;
+    private string $typeformId;
 
     public function getTypeformId(): string
     {

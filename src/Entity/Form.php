@@ -20,20 +20,16 @@ class Form
     use TypeformIdEntityTrait;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    private $id;
+    private string $id;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="name")
      */
-    private $name;
+    private string $name;
 
     /**
      * @var ArrayCollection

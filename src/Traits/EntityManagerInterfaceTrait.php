@@ -9,8 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 trait EntityManagerInterfaceTrait
 {
-    /** @var EntityManagerInterface */
-    private $em;
+    private EntityManagerInterface $em;
 
     /**
      * @required

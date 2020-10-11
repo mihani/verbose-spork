@@ -1,4 +1,4 @@
-history
+/docker/data/history
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -26,4 +26,4 @@ history
 
 ###> infection/infection ###
 infection.log
-###< symfony/phpunit-bridge ###
+###< infection/infection ###
