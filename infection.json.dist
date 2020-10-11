@@ -1,0 +1,22 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Migrations",
+            "Kernel.php",
+            "DataFixtures",
+            "Entity",
+            "Repository"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true,
+        "@function_signature": false
+    }
+}

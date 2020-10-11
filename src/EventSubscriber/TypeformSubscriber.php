@@ -18,14 +18,9 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class TypeformSubscriber implements EventSubscriberInterface
 {
-    /** @var FormManager */
-    private $formManager;
-
-    /** @var QuestionManager */
-    private $questionManager;
-
-    /** @var AnswerManager */
-    private $answerManager;
+    private FormManager $formManager;
+    private QuestionManager $questionManager;
+    private AnswerManager $answerManager;
 
     public function __construct(
         FormManager $formManager,

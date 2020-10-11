@@ -10,11 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 trait TypeformRefEntityTrait
 {
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="typeform_ref")
      */
-    private $typeformRef;
+    private string $typeformRef;
 
     public function getTypeformRef(): string
     {

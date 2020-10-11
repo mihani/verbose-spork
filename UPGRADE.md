@@ -1,5 +1,8 @@
 # UPGRADE
 
+## 2.5.1 to 2.5.2
+* Remove Swagger UI in prod env
+
 ## 2.5.0 to 2.5.1
 Fix create question
 

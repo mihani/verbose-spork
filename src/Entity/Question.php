@@ -21,30 +21,28 @@ class Question
     use TypeformRefEntityTrait;
 
     public const MULTIPLE_CHOICE_TYPE = 'multiple_choice';
+    public const SHORT_TEXT_CHOICE_TYPE = 'short_text';
+    public const EMAIL_CHOICE_TYPE = 'email';
+    public const LONG_TEXT_CHOICE_TYPE = 'long_text';
+    public const BOOL_CHOICE_TYPE = 'yes_no';
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    private $id;
+    private string $id;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="label")
      */
-    private $label;
+    private string $label;
 
     /**
-     * @var Form
-     *
      * @ORM\ManyToOne(targetEntity="Form", inversedBy="questions")
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
-    private $form;
+    private Form $form;
 
     /**
      * @var ArrayCollection
@@ -54,18 +52,14 @@ class Question
     private $anwsers;
 
     /**
-     * @var bool
-     *
      * @ORM\Column(type="boolean", name="allow_other_choice")
      */
-    private $allowOtherChoice = false;
+    private bool $allowOtherChoice = false;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", name="type")
      */
-    private $type;
+    private string $type;
 
     /**
      * @var ArrayCollection

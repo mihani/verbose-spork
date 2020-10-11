@@ -22,17 +22,17 @@ class SecuritySubscriber implements EventSubscriberInterface
 
     public function headerControl(RequestEvent $requestEvent): void
     {
-//        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')) {
-//            if (!$this->verifySignature($receivedSignature, (string) $requestEvent->getRequest()->getContent())) {
-//                $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
-//            }
-//        }
+        if ($receivedSignature = $requestEvent->getRequest()->headers->get('Typeform-Signature')) {
+            if ($this->verifySignature((string) $receivedSignature, (string) $requestEvent->getRequest()->getContent())) {
+                $requestEvent->setResponse(new JsonResponse(null, Response::HTTP_FORBIDDEN));
+            }
+        }
     }
 
     private function verifySignature(string $receivedSignature, string $payload): bool
     {
         $hash = hash_hmac('sha256', $payload, $_ENV['TYPEFORM_SECRET'], true);
-        $signature = sprintf('%s%s', 'sha256=', base64_encode($hash));
+        $signature = sprintf('sha256=%s', base64_encode($hash));
 
         return $signature === $receivedSignature;
     }

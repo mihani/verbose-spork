@@ -1,0 +1,4 @@
+api_platform:
+    show_webby: true
+    enable_swagger_ui: true
+    enable_re_doc: true
