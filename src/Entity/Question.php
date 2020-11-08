@@ -64,7 +64,7 @@ class Question
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="QuestionChoice", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="QuestionChoice", mappedBy="question", cascade={"persist", "remove"})
      */
     private $questionChoices;
 
@@ -160,7 +160,7 @@ class Question
         return $this;
     }
 
-    public function getQuestionChoices(): ArrayCollection
+    public function getQuestionChoices(): Collection
     {
         return $this->questionChoices;
     }
