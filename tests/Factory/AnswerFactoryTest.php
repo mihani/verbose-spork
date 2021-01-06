@@ -14,7 +14,7 @@ class AnswerFactoryTest extends TestCase
 {
     public function testCreateAnswerSuccess(): void
     {
-        $fieldDto = new FieldDto('fieldId','short_text', '62887e4e6983de5a');
+        $fieldDto = new FieldDto('fieldId', 'short_text', '62887e4e6983de5a');
 
         $answerDto = new AnswerDto('text', 'answerSucces', $fieldDto);
 
@@ -22,7 +22,8 @@ class AnswerFactoryTest extends TestCase
             ->setTypeformId('fieldId')
             ->setTypeformRef('62887e4e6983de5a')
             ->setType('short_text')
-            ->setLabel('Quel est votre nom complet ?');
+            ->setLabel('Quel est votre nom complet ?')
+        ;
 
         $answer = AnswerFactory::create($answerDto, $question, Uuid::uuid4());
 
