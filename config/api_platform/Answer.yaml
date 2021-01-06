@@ -1,4 +1,10 @@
 App\Entity\Answer:
-  collectionOperations: []
-  itemOperations:
+  collectionOperations:
     get: ~
+    post_new_answer:
+      input: App\Dto\TypeformAnswerPayload
+      method: POST
+      path: /new-answer
+      read: false
+      controller: App\Controller\NewAnswer
+  itemOperations: []

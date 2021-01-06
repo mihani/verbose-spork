@@ -2,6 +2,7 @@
 
 namespace App\EventSubscriber;
 
+use App\Utils\EnvUtils;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +32,7 @@ class SecuritySubscriber implements EventSubscriberInterface
 
     private function verifySignature(string $receivedSignature, string $payload): bool
     {
-        $hash = hash_hmac('sha256', $payload, $_ENV['TYPEFORM_SECRET'], true);
+        $hash = hash_hmac('sha256', $payload, EnvUtils::getEnv('TYPEFORM_SECRET'), true);
         $signature = sprintf('sha256=%s', base64_encode($hash));
 
         return $signature === $receivedSignature;
