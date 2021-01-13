@@ -1,13 +1,24 @@
 name: Main CI
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - master
 
 jobs:
-  php-cs-fixer:
-    name: PHP-CS-Fixer
+  quality-ci:
+    name: Quality CI
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: PHP-CS-Fixer
-      uses: docker://oskarstark/php-cs-fixer-ga
-      with:
-        args: --config=.php_cs.dist --verbose --diff --dry-run
+      - uses: actions/checkout@v2
+      - name: PHP-CS-Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --config=.php_cs.dist --verbose --diff --dry-run
+      - name: PHPUnit test
+        if: ${{ success() }}
+        uses: php-actions/phpunit@v2
+        with:
+          configuration: .phpunit.xml.dist
+          php_version: 7.4
+          version: 8.3.5
+
