@@ -10,15 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: PHP-CS-Fixer
+      - name: PHP CS Fixer
+        id: php-cs-fixer
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
-          args: --config=.php_cs.dist --verbose --diff --dry-run
-      - name: PHPUnit test
+          args: --verbose --diff --dry-run
+      - name: Install Dependancies
         if: ${{ success() }}
-        uses: php-actions/phpunit@v2
+        uses: mihani/docker-image-typeform-api-php@master
         with:
-          configuration: .phpunit.xml.dist
-          php_version: 7.4
-          version: 8.3.5
-
+          args: composer install --prefer-dist --no-progress
+      - name: PHP Unit test
+        if: ${{ success() }}
+        run: php bin/phpunit
