@@ -17,7 +17,7 @@ jobs:
           args: --verbose --diff --dry-run
       - name: Install Dependancies
         if: ${{ success() }}
-        uses: mihani/docker-image-typeform-api-php@master
+        uses: mihani/docker-image-typeform-api-php@v2
         with:
           args: composer install --prefer-dist --no-progress
       - name: PHP Unit test
