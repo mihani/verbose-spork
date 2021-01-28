@@ -1,13 +1,27 @@
 name: Main CI
-on: [push]
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'update/*'
+      - develop
 
 jobs:
-  php-cs-fixer:
-    name: PHP-CS-Fixer
+  quality-ci:
+    name: Quality CI
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: PHP-CS-Fixer
-      uses: docker://oskarstark/php-cs-fixer-ga
-      with:
-        args: --config=.php_cs.dist --verbose --diff --dry-run
+      - uses: actions/checkout@v2
+      - name: PHP CS Fixer
+        id: php-cs-fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --verbose --diff --dry-run
+      - name: Install Dependancies
+        if: ${{ success() }}
+        uses: mihani/docker-image-typeform-api-php@v2
+        with:
+          args: composer install --prefer-dist --no-progress
+      - name: PHP Unit test
+        if: ${{ success() }}
+        run: php bin/phpunit
