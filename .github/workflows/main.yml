@@ -1,8 +1,10 @@
 name: Main CI
 on:
   push:
-    branches-ignore:
-      - master
+    branches:
+      - 'feature/*'
+      - 'update/*'
+      - develop
 
 jobs:
   quality-ci:
