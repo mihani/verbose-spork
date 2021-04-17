@@ -3,7 +3,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    env_file: .env.local
+    env_file: docker.env
     volumes:
       - mysql:/var/lib/mysql
       - ./docker/data:/docker/data
@@ -11,9 +11,7 @@ services:
 
   php:
     build: ./docker/php
-    env_file: .env.local
-    environment:
-      SSH_AUTH_SOCK: /tmp/agent.sock
+    env_file: docker.env
     volumes:
       - $SSH_AUTH_SOCK:/tmp/agent.sock
       - ~/.composer:/home/.composer
