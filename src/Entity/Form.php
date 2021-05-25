@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Traits\Entity\TypeformIdEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -12,6 +13,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class Form
 {

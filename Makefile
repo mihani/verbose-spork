@@ -3,7 +3,7 @@ DOCKER_COMPOSE = docker-compose
 ##
 ## Env Dev
 ##--------
-install-dev:
+install:
 	touch docker/data/history
 	cp .env .env.local
 	$(DOCKER_COMPOSE) up -d
