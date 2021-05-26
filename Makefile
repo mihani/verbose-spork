@@ -3,7 +3,7 @@ DOCKER_COMPOSE = docker-compose
 ##
 ## Env Dev
 ##--------
-install-dev:
+install:
 	touch docker/data/history
 	cp .env .env.local
 	$(DOCKER_COMPOSE) up -d
@@ -13,7 +13,7 @@ install-dev:
 ##
 ## Quality assurance
 ## -----------------
-cs-fixer:
+phpcs-fixer:
 	$(DOCKER_COMPOSE) exec php vendor/bin/php-cs-fixer fix --verbose
 
 .PHONY : clean
