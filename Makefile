@@ -13,7 +13,7 @@ install:
 ##
 ## Quality assurance
 ## -----------------
-cs-fixer:
+phpcs-fixer:
 	$(DOCKER_COMPOSE) exec php vendor/bin/php-cs-fixer fix --verbose
 
 .PHONY : clean
