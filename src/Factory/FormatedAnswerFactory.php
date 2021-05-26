@@ -10,7 +10,7 @@ use App\Entity\Question;
 
 class FormatedAnswerFactory
 {
-    public static function create(string $groupByToken, string $name, string $email, string $companyDescription, string $contactReason, bool $cooptation, \DateTime $receivedAt): FormatedAnswer
+    public static function create(string $groupByToken, string $name, string $email, string $companyDescription, ?string $contactReason, bool $cooptation, \DateTime $receivedAt): FormatedAnswer
     {
         return (new FormatedAnswer())
             ->setUuid($groupByToken)
@@ -75,7 +75,7 @@ class FormatedAnswerFactory
                 $formatedAnswer[Question::FORMATED_ANSWER_ROLE_NAME],
                 $formatedAnswer[Question::FORMATED_ANSWER_ROLE_EMAIL],
                 $formatedAnswer[Question::FORMATED_ANSWER_ROLE_COMPANY],
-                $formatedAnswer[Question::FORMATED_ANSWER_ROLE_REASON],
+                $formatedAnswer[Question::FORMATED_ANSWER_ROLE_REASON] ?? null,
                 $formatedAnswer[Question::FORMATED_ANSWER_ROLE_COOPTATION],
                 $formatedAnswer['receivedAt'],
             );

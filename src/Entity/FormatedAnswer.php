@@ -126,14 +126,14 @@ class FormatedAnswer
         return $this;
     }
 
-    public function getContactReason(): string
+    public function getContactReason(): ?string
     {
         return $this->contactReason;
     }
 
-    public function setContactReason(string $contactReason): FormatedAnswer
+    public function setContactReason(?string $contactReason): FormatedAnswer
     {
-        $this->contactReason = $contactReason;
+        $this->contactReason = is_null($contactReason) ? '' : $contactReason;
 
         return $this;
     }
