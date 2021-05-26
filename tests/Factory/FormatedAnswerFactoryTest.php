@@ -59,7 +59,6 @@ class FormatedAnswerFactoryTest extends TestCase
                     ->setCreatedAt($answerDatum['createdAt'])
                 ;
             }
-
         }
 
         $formatedAnswerEntities = FormatedAnswerFactory::createFromAnswers($answers);
