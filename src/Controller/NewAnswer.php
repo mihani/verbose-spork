@@ -7,15 +7,24 @@ use App\Dto\DefinitionFieldDto;
 use App\Dto\TypeformAnswerPayload;
 use App\Entity\Form;
 use App\Entity\Question;
+use App\Event\FormatedAnswerCreateEvent;
 use App\Factory\AnswerFactory;
 use App\Factory\FormFactory;
 use App\Factory\QuestionFactory;
 use App\Traits\EntityManagerInterfaceTrait;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class NewAnswer
 {
     use EntityManagerInterfaceTrait;
+
+    private EventDispatcherInterface $dispatcher;
+
+    public function __construct(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
 
     public function __invoke(TypeformAnswerPayload $data)
     {
@@ -57,6 +66,9 @@ class NewAnswer
         }
 
         $this->em->flush();
+
+        $event = new FormatedAnswerCreateEvent($token->toString());
+        $this->dispatcher->dispatch($event, FormatedAnswerCreateEvent::NAME);
 
         return $formResponse->answers;
     }

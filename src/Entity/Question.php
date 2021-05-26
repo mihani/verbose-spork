@@ -7,12 +7,14 @@ use App\Traits\Entity\TypeformRefEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class Question
 {
@@ -25,6 +27,12 @@ class Question
     public const EMAIL_CHOICE_TYPE = 'email';
     public const LONG_TEXT_CHOICE_TYPE = 'long_text';
     public const BOOL_CHOICE_TYPE = 'yes_no';
+
+    public const FORMATED_ANSWER_ROLE_EMAIL = 'email';
+    public const FORMATED_ANSWER_ROLE_NAME = 'name';
+    public const FORMATED_ANSWER_ROLE_COMPANY = 'company';
+    public const FORMATED_ANSWER_ROLE_REASON = 'reason';
+    public const FORMATED_ANSWER_ROLE_COOPTATION = 'cooptation';
 
     /**
      * @ORM\Column(type="string", name="id")
@@ -67,6 +75,11 @@ class Question
      * @ORM\OneToMany(targetEntity="QuestionChoice", mappedBy="question", cascade={"persist", "remove"})
      */
     private $questionChoices;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $formatedAnswerRole;
 
     public function __construct()
     {
@@ -156,6 +169,18 @@ class Question
     public function setType(string $type): Question
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getFormatedAnswerRole(): ?string
+    {
+        return $this->formatedAnswerRole;
+    }
+
+    public function setFormatedAnswerRole($formatedAnswerRole): self
+    {
+        $this->formatedAnswerRole = $formatedAnswerRole;
 
         return $this;
     }

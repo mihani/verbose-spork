@@ -4,17 +4,19 @@ namespace App\Entity;
 
 use App\Traits\Entity\TypeformIdEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class QuestionChoice
 {
-    use SoftDeleteableEntity;
     use TypeformIdEntityTrait;
+    use SoftDeleteableEntity;
 
     /**
      * @ORM\Column(type="string", name="id")
