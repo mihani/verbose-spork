@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - 'feature/*'
+      - 'feat/*'
+      - 'fix/*'
       - 'update/*'
       - develop
 
